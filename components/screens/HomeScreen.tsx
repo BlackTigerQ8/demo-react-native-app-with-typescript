@@ -10,7 +10,11 @@ import {
 import { images } from "../images";
 import { Ionicons } from "@expo/vector-icons";
 
-export default function HomeScreen({ navigation }: { navigation: any }) {
+export default function HomeScreen() {
+  const goToMenu = () => {
+    // Navigate to Menu screen
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.container}>
@@ -18,12 +22,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
         <Image source={images[0].image} style={styles.image} />
         <Text style={styles.subtitle}>{images[0].description}</Text>
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            console.log("clicked!");
-          }}
-        >
+        <TouchableOpacity style={styles.button} onPress={goToMenu}>
           <Text style={styles.buttonText}>Go to Menu</Text>
         </TouchableOpacity>
       </View>

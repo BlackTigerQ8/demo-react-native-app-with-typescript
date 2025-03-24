@@ -14,7 +14,7 @@ const initialCartItems = [
   { id: "3", name: "Beef Burger", price: 7.99, quantity: 1 },
 ];
 
-export default function CartScreen({ navigation }: { navigation: any }) {
+export default function CartScreen() {
   const [cartItems, setCartItems] = useState(initialCartItems);
 
   const incrementQuantity = (id: string) => {
@@ -42,13 +42,20 @@ export default function CartScreen({ navigation }: { navigation: any }) {
   };
 
   const handleCheckout = () => {
-    console.log("clicked!");
+    // Replace current screen with Success screen
+    // User can't go back to cart after checkout
+  };
+
+  const goBackToMenu = () => {
+    // Pop back to previous screen (goBack())
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Your Cart</Text>
-
+      <TouchableOpacity style={styles.backButton} onPress={goBackToMenu}>
+        <Text>← Back to Menu</Text>
+      </TouchableOpacity>
       <FlatList
         data={cartItems}
         keyExtractor={(item) => item.id}
@@ -78,7 +85,6 @@ export default function CartScreen({ navigation }: { navigation: any }) {
           </View>
         )}
       />
-
       <View style={styles.totalContainer}>
         <Text style={styles.totalText}>Total: ${calculateTotal()}</Text>
         <TouchableOpacity
@@ -175,5 +181,10 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  backButton: {
+    position: "absolute",
+    top: 20,
+    left: 20,
   },
 });

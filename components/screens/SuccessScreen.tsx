@@ -1,7 +1,15 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
-export default function SuccessScreen({ navigation }: { navigation: any }) {
+export default function SuccessScreen() {
+  const goToHomeAndReset = () => {
+    // Reset entire navigation stack to home
+  };
+
+  const goToMenu = () => {
+    // Push new screen (allows going back)
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Order Successful!</Text>
@@ -9,11 +17,15 @@ export default function SuccessScreen({ navigation }: { navigation: any }) {
         Thank you for your order. It will be delivered soon!
       </Text>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => console.log("clicked!")}
-      >
+      <TouchableOpacity style={styles.button} onPress={goToHomeAndReset}>
         <Text style={styles.buttonText}>Go to Home</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={[styles.button, styles.secondaryButton]}
+        onPress={goToMenu}
+      >
+        <Text style={styles.buttonText}>Order More</Text>
       </TouchableOpacity>
     </View>
   );
@@ -49,5 +61,9 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  secondaryButton: {
+    backgroundColor: "#444",
+    marginTop: 10,
   },
 });

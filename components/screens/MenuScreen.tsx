@@ -25,9 +25,16 @@ const menuItems = [
   { id: "15", name: "French Fries", price: "$2.99" },
 ];
 
-export default function MenuScreen({ navigation }: { navigation: any }) {
-  const addedToCart = () => {
-    console.log("clicked!");
+export default function MenuScreen() {
+  const addedToCart = (item: { id: string; name: string; price: string }) => {
+    // navigation.navigate("Cart", {
+    //   // Optional: Pass data to Cart screen
+    //   item: {
+    //     id: item.id,
+    //     name: item.name,
+    //     price: item.price,
+    //   },
+    // });
   };
 
   return (
@@ -44,7 +51,10 @@ export default function MenuScreen({ navigation }: { navigation: any }) {
               <Text style={styles.itemPrice}>{item.price}</Text>
             </View>
             <View>
-              <TouchableOpacity style={styles.button} onPress={addedToCart}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => addedToCart(item)}
+              >
                 <Text style={styles.buttonText}>Add to cart</Text>
               </TouchableOpacity>
             </View>
